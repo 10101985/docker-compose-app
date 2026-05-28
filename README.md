@@ -1,24 +1,19 @@
 # Docker Compose App 🐳
 
-Aplicación multi-contenedor con Nginx y MySQL usando Docker Compose.  
-Diseñada para demostrar orquestación básica de contenedores en entornos de desarrollo local.
+Aplicación multi-contenedor con Nginx y MySQL usando Docker Compose,
+diseñada para demostrar orquestación básica de contenedores en entornos de desarrollo local.
 
 ## Servicios incluidos
 
 ### 🌐 Web Server (Nginx)
-- Imagen: `nginx:alpine`
-- Puerto expuesto: `8080:80`
-- Volumen: `./app` montado en `/usr/share/nginx/html`
-- Sirve contenido HTML estático
+Servidor web que sirve contenido HTML estático con volumen montado.
+Puerto expuesto: `8080:80` para acceso desde el host.
 
 ### 🗄️ Base de Datos (MySQL 8.0)
-- Imagen: `mysql:8.0`
-- Variables de entorno desde archivo `.env`
-- Volumen persistente: `datos-mysql`
-- Red interna aislada
+Base de datos relacional con volumen persistente y red interna aislada.
+Variables de entorno configuradas desde archivo `.env`.
 
 ## Estructura del proyecto
-
 docker-compose-app/
 ├── docker-compose.yml
 ├── .env
@@ -38,7 +33,6 @@ DB_USER=appuser
 DB_PASSWORD=apppass
 
 Cómo ejecutar
-
 # Levantar los servicios
 docker-compose up -d
 
@@ -61,7 +55,7 @@ Conceptos aplicados
 
     Docker Compose — orquestación multi-contenedor
 
-    Redes personalizadas — bridge para aislamiento
+    Redes personalizadas — bridge para aislamiento entre servicios
 
     Volúmenes persistentes — datos que sobreviven al contenedor
 
@@ -71,7 +65,7 @@ Conceptos aplicados
 
 Uso en el mundo laboral
 
-Este proyecto replica el flujo típico de una aplicación web con backend de base de datos en desarrollo local. Docker Compose es estándar en equipos DevOps para entornos de prueba y CI/CD.
+Este proyecto replica el flujo típico de una aplicación web con backend de base de datos en desarrollo local. Docker Compose es estándar en equipos DevOps para entornos de prueba, integración continua y desarrollo colaborativo.
 Tecnologías
 
 https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white
