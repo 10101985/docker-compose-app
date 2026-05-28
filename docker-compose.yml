@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  web:
+    image: nginx:alpine
+    container_name: web-server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
+    depends_on:
+      - db
+    networks:
+      - red-interna
+
+  db:
+    image: mysql:8.0
+    container_name: base-datos
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - datos-mysql:/var/lib/mysql
+    networks:
+      - red-interna
+
+volumes:
+  datos-mysql:
+
+networks:
+  red-interna:
+    driver: bridge
+
